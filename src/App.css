@@ -1,0 +1,45 @@
+.over {
+    margin-left: .2in;
+}
+
+.centered {
+    margin: auto;
+}
+
+.round {
+    border-radius: .3in;
+}
+
+.padded {
+    padding: .2in;
+}
+
+.bordered {
+    border: solid gray 2px;
+}
+
+.second {
+    color:gray;
+}
+
+.inline {
+    display:inline-block;
+}
+
+.w-5 {
+    width: 5%;
+    font-style:bold;
+}
+
+.toPost:hover {
+    color: lightgray;
+}
+
+.p-25 {
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+.f-30 {
+    font-size:25px;
+}
