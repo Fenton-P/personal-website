@@ -43,3 +43,9 @@
 .f-30 {
     font-size:25px;
 }
+
+#header {
+    position: fixed;
+    width: 100%;
+    border: round;
+}

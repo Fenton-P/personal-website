@@ -21,7 +21,7 @@ function getOrderedPosts() {
     while(change) {
         change = false;
         for(let i = 0;i<arr.length-1;i++) {
-            if(Date.parse(arr[i].date) > Date.parse(arr[i+1].date)) {
+            if(Date.parse(arr[i].date) < Date.parse(arr[i+1].date)) {
                 swap(arr, i, i+1);
                 change = true;
             }

@@ -10,7 +10,9 @@ function App() {
 
   return (
     <div>
-      <Header onScreenChange={(element : {id: number, title: string}) => updatePage(element)}/>
+      <Header onScreenChange={updater}/>
+      <br/>
+      <br/>
 
       {getSelectedWindow(element, updater)}
     </div>

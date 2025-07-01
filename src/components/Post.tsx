@@ -17,6 +17,8 @@ function Post(prop: Prop) {
             <br/>
             <br/>
             {post.body.map(para => <><br/>{parse('<p className="text-center p-25 f-30">' + para + '</p>')}</>)}
+            <br/>
+            <br/>
         </>
     )
 }
