@@ -1,26 +1,27 @@
 import Header from './components/Header';
 import Home from './components/Home';
-import { useState } from 'react';
-import PostView from './components/PostView';
+import { Dispatch, SetStateAction, useState } from 'react';
+import Blog from './components/Blog';
+import Post from './components/Post';
 
 function App() {
-  let [element, updatePage] = useState({id: 0, count: 0});
+  let [element, updatePage] = useState({id: 0, title: ""});
+  let updater = (newElement: {id: number, title: string}) => updatePage(newElement);
 
   return (
     <div>
       <Header onScreenChange={(element : {id: number, title: string}) => updatePage(element)}/>
 
-      {getSelectedWindow(element)}
+      {getSelectedWindow(element, updater)}
     </div>
   );
 }
 
-function getSelectedWindow(element: {id: number, title: String}, updatePage: (newElement: {id: number, count: number}) => void) {
-  let updater = (newElement: {id: number, count: number}) => updatePage(newElement);
+function getSelectedWindow(element: {id: number, title: string}, updater: (element: {id: number, title: string}) => void) {
   let windows = [
     <Home onScreenChange={updater}/>,
     <Blog onScreenChange={updater}/>,
-    <PostView title={title} onScreenChange={updater} />
+    <Post title={element.title} />
   ]
 
   return windows[element.id]

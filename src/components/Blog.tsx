@@ -1,7 +1,7 @@
 import PostView from "./PostView";
 import post_data from '../posts.json';
 
-function Blog({onScreenChange}: {onScreenChange: (element: JSX.Element) => void}) {
+function Blog({onScreenChange}: {onScreenChange: (element: { id: number; title: string; }) => void}) {
     return (
         <>
             <br/>

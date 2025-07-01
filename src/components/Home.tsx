@@ -1,6 +1,6 @@
 import PostView from "./PostView";
 
-function Home({onScreenChange}: {onScreenChange: (element: JSX.Element) => void}) {
+function Home({onScreenChange}: {onScreenChange: (element: {id: number, title: string}) => void}) {
     return (
         <>
             <br/>
