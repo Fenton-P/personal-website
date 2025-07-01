@@ -1,14 +1,14 @@
 import PostView from "./PostView";
 import post_data from '../posts.json';
 
-function Blog() {
+function Blog({onScreenChange}: {onScreenChange: (element: JSX.Element) => void}) {
     return (
         <>
             <br/>
             <br/>
             <h1 className="text-center">All Posts</h1>
             
-            {getOrderedPosts().map((post) => <><br/><PostView title={post.title}/></>)}
+            {getOrderedPosts().map((post) => <><br/><PostView onScreenChange={onScreenChange} title={post.title}/></>)}
         </>
     );
 }

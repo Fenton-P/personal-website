@@ -1,16 +1,13 @@
 import post_data from '../posts.json';
 import Post from './Post';
 
-interface Prop {
-    title: string;
-}
 
-function PostView(prop: Prop) {
-    let post = getPost(prop.title);
+function PostView({title, onScreenChange}: {title: string, onScreenChange: (element: JSX.Element) => void}) {
+    let post = getPost(title);
 
     return (
         <div className="round bg-dark bordered w-75 centered padded">
-            <h3 className="over inline toPost" onClick={() => updateWindow(<Post title={post.title}/>)}>{post.title}</h3>
+            <h3 className="over inline toPost" onClick={() => onScreenChange(<Post title={post.title}/>)}>{post.title}</h3>
             <h3 className="w-5 inline text-center">-</h3>
             <h5 className="second inline">{post.summary}</h5>
         </div>
@@ -35,10 +32,6 @@ function getPost(title: string) {
     }
 
     return post_data.posts[0];
-}
-
-function updateWindow(window: JSX.Element) {
-    dispatchEvent(new CustomEvent("screenChange", {detail: window}));
 }
 
 export default PostView;
