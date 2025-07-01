@@ -1,4 +1,5 @@
 import post_data from '../posts.json'
+import parse from 'html-react-parser';
 
 interface Prop {
     title: string
@@ -6,7 +7,7 @@ interface Prop {
 
 function Post(prop: Prop) {
     let post = getPost(prop.title);
-
+    
     return (
         <>
             <br/>
@@ -15,7 +16,7 @@ function Post(prop: Prop) {
             <h3 className="second text-center">{post.summary}</h3>
             <br/>
             <br/>
-            {post.body.map(para => <><br/><p className="text-center p-25 f-30">{para}</p></>)}
+            {post.body.map(para => <><br/>{parse('<p className="text-center p-25 f-30">' + para + '</p>')}</>)}
         </>
     )
 }
