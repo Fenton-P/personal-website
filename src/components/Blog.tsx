@@ -8,7 +8,7 @@ function Blog({onScreenChange}: {onScreenChange: (element: { id: number; title: 
             <br/>
             <h1 className="text-center">All Posts</h1>
             
-            {getOrderedPosts().map((post) => <><br/><PostView onScreenChange={onScreenChange} title={post.title}/></>)}
+            {getOrderedPosts().map((post) => <><br/><PostView id={post.title} onScreenChange={onScreenChange}/></>)}
         </>
     );
 }

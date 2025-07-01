@@ -1,12 +1,12 @@
 import post_data from '../posts.json';
 
 
-function PostView({title, onScreenChange}: {title: string, onScreenChange: (element: { id: number; title: string; }) => void}) {
-    let post = getPost(title);
+function PostView({id, onScreenChange}: {id: string, onScreenChange: (element: { id: number; title: string; }) => void}) {
+    let post = getPost(id);
 
     return (
         <div className="round bg-dark bordered w-75 centered padded">
-            <h3 className="over inline toPost" onClick={() => onScreenChange({id: 2, title: title})}>{post.title}</h3>
+            <h3 className="over inline toPost" onClick={() => onScreenChange({id: 2, title: id})}>{post.title}</h3>
             <h3 className="w-5 inline text-center">-</h3>
             <h5 className="second inline">{post.summary}</h5>
         </div>
