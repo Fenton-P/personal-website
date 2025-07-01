@@ -7,7 +7,7 @@ function Home({onScreenChange}: {onScreenChange: (element: {id: number, title: s
             <br/>
             <h1 className="text-center">Recent Posts</h1>
             <br/>
-            <PostView title="recent" onScreenChange={onScreenChange}/>
+            <PostView id="recent" onScreenChange={onScreenChange}/>
         </>
     );
 }
