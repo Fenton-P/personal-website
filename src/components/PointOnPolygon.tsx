@@ -65,6 +65,7 @@ function init() {
         let y = event.offsetY;
 
         let point = getPointOnPolygon(polygon, {x: x, y: y});
+        if(paint == null) return;
         drawPointOnPolygon(paint, polygon, point);
     });
 }
