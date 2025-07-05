@@ -36,6 +36,14 @@ function customParse(html: string) {
                             {fin4}
                         </>
                     );
+                case "Link":
+                    if(tag.length < 3) return <p>NO LINK OR DESCRIPTION FOUND</p>;
+                    let link = tag[1];
+                    let linkDescription = tag[2];
+
+                    let fin1 = '<p className="text-center p-25 f-30">' + beginning + " <a href='" + link + "'>" + linkDescription + "</a>" + ending + '</p>';
+
+                    return parse(fin1);
             }
         }
     }
