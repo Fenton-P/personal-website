@@ -10,7 +10,7 @@ function customParse(html: string) {
             let end = html.indexOf('^^', i+2);
             if(end == -1) continue;
 
-            let tag = html.substring(i+2, end);
+            let tag = html.substring(i+2, end).split(", ");
             let beginning = html.substring(0, i);
             let ending = html.substring(end+2, html.length);
             let fin = '<p className="text-center p-25 f-30">' + beginning + '</p>';
@@ -18,9 +18,24 @@ function customParse(html: string) {
             let fin3 = parse(fin);
             let fin4 = parse(fin2);
             
-            switch(tag) {
+            switch(tag[0]) {
                 case "PointOnPolygon":
                     return <>{fin3} <PointOnPolygon /> {fin4}</>;
+                case "Image":
+                    if(tag.length < 3) return <p>NO SOURCE OR DESCRIPTION FOUND</p>;
+                    let src = tag[1];
+                    let description = tag[2];
+
+                    return (
+                        <>
+                            {fin3}
+                            <div className="text-center">
+                                <img src={src} alt="Error" className="w-50"/>
+                                <p className="p-25 second">{description}</p>
+                            </div>
+                            {fin4}
+                        </>
+                    );
             }
         }
     }
