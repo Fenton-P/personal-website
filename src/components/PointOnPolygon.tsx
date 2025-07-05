@@ -24,7 +24,9 @@ class Line {
 }
 
 function PointOnPolygon() {
-    useEffect(() => init);
+    useEffect(() => {
+    init();
+  }, []);
 
     return (
         <div>
