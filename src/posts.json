@@ -29,6 +29,38 @@
                 "Currently, I am working on allowing the user to add doors to rooms, but, because the rooms can be concave, I need to write an algorithm to find the wall the user's mouse is closest to and place a door on that wall. I am familiar with a line to point distance formula that should help, so you can expect an update on that soon. If you ever want to run the project yourself or take a look at the code (though not finished yet), you can find the github page <a href='https://github.com/Fenton-P/random-dungeon-generator-generator'>here</a>.",
                 "Thanks for reading - Fenton"
             ]
+        },
+        {
+            "title": "Convex and Concave Polygon Border Detection",
+            "date": "7/5/2025",
+            "summary": "Finding Closest Point on Polygon Border Relative to a Point",
+            "body": [
+                "With regards to my random dungeon generator generator, I bring news about an algorithm that I have produced to determine the closest point on any given polygon’s border (whether it be concave or convex) to another point (presumably the mouse). Some adjustments must still be made, but the general idea can be observed already.",
+                "In any case, here is the algorithm:",
+                "1. Take all points in the polygon P and generate a list L of all lines that comprise the polygon.",
+                "2. Take your reference point z and calculate the distance to each line and store those in array D",
+                "3. Create a reference array R and list each index of each element in D, then sort R based on D",
+                "4. Take the first element of R, r1, and find the closest point on line L[r1] to z, refer to it as p",
+                "5. If p falls between the two points comprising L[r1], find the closest point out of p and all of the vertices of the polygon, then return it",
+                "6. If it doesn’t, remove r1 from R and go back to step 4, if R has no more elements proceed to 7",
+                "7. Find the closest vertice to z and return that point instead",
+                "<img src='diagram5.png' alt='Error message' className='centered w-50'/><p className='text-center p-25 second'>Full Algorithm (Though Messy)</p>",
+                "After discovering this algorithm I tailored it to my needs: instead of returning a point, I returned the two indexes of the points that comprised the line that the point outside the polygon fell on as well as a scalar value that described how far over the line went.",
+                "<img src='diagram6.png' alt='Error message' className='centered w-50'/><p className='text-center p-25 second'>Example Given Point P</p>",
+                "For the second part of this post, I will go into a little more detail and provide a code example of this algorithm for any who are curious about its implementation.",
+                "1. To transform all of the points in P to L, simply iterate over each point p and store a line from the current point in P and the next point in P (If there is no next point, then put the first point in P).",
+                "2. Step 2 requires the point to line distance formula: |A * z.x + B * z.y + C| / sqrt(A * A + B * B). Where Ax + By + C = 0 is the equation of the line and z.x and z.y are the x and y components of z respectively. To calculate A: x1 - x2, B: y2 - y1, C: y1 * x2 - y2 * x1. Where the first point is (x1, y1) and the second point is (x2, y2). Simply store these values in array D with the same order as the list of lines to finish this step.Step 2 requires the point to line distance formula: |A * z.x + B * z.y + C| / sqrt(A * A + B * B). Where Ax + By + C = 0 is the equation of the line and z.x and z.y are the x and y components of z respectively. To calculate A: x1 - x2, B: y2 - y1, C: y1 * x2 - y2 * x1. Where the first point is (x1, y1) and the second point is (x2, y2). Simply store these values in array D with the same order as the list of lines to finish this step.",
+                "3. Reference array R just holds reference values to distances in D and lines in L. R should look like [0, 1, …, n] given an n sided polygon at the start. For the sake of simplicity, let P be a 3 sided polygon in this example. R would look like this: [0, 1, 2]. Due to the position of point z, let’s say D (the distances from point Z to each line) looks like this: [12, 24, 11]. The goal would be to sort R such that the reference values would point to the D values ascending in order. So R would now look like this: [2, 0, 1].",
+                "4. Now, you should take the first element in R to reference the according line in L (so L[R[0]]). To find the closest point on this line to point z, the following formula can be applied: (B * B * z.x - C * A - z.y * B * A) / (B * B + A * A) = x, and y = (A * z.x + C) / B. Note that if B is zero then y will be undefined, to remedy this, just return z.y if B is equal to zero (Also, remember A, B, and C as variables to describe a line from earlier). Let (x, y) now comprise point p.",
+                "5. Given point p from the previous step, we need to check if it actually falls between the two points that comprise the line on the polygon. To do this (because we already know the point falls on the line) we can just check if the point falls within the length of the line from both points that make the line. So, where p1 and p2 are the points that make the line of the polygon we are checking, distance d1 = distanceBetween(p1, p2), d2 = distanceBetween(p1, p), and d3 = distanceBetween(p2, p). The distance between function is just the pythagorean theorem: (p1, p2) -> (p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y). After performing this check, if the point falls between the two points, we now need to check if any of the vertices of the polygon are closer to mouse (to ensure that the point is going to be on the correct side of the polygon). To do this, just check the distance to each vertex of the polygon, if the distance to one of the points is less, return that point instead, otherwise return point p as the closest point to the reference point.",
+                "6. If the check fails, however, simply remove R[0]. if R now has no more elements, proceed to step 7, otherwise go back to step 4.",
+                "7. Simply apply the distance formula from before (distanceBetween), on every vertice of the polygon. Determine the closest point to your reference point z and return that point instead.",
+                "Here is an example of what this algorithm should look like once implemented:",
+                "^^PointOnPolygon^^",
+                "You may notice that in the concave portion of the polygon that the point will jump quickly to the other line. My current theory as to why this happens is because as the mouse point gets projected onto the polygon, it becomes impossible to make the projected point closer to the concave vertex without another line taking priority. Thus, you have to move the mouse closer and closer to make the point approach the vertex. By this logic, at vertices that form an greater than 180 degree angle, the point will be 'swallowed' up by the other sides.",
+                "Other than that flaw (though I hardly consider it one), the algorithm works as intended and should function to allow the user to place doors on the walls of rooms as they please.",
+                "Thanks for reading - Fenton"
+            ]
         }
     ]
 }

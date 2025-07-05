@@ -1,5 +1,32 @@
+import { Component, ReactElement } from 'react';
 import post_data from '../posts.json'
 import parse from 'html-react-parser';
+import PointOnPolygon from './PointOnPolygon';
+
+function customParse(html: string) {
+
+    for(let i = 0;i<html.length-1;i++) {
+        if(html[i] == '^' && html[i+1] == '^') {
+            let end = html.indexOf('^^', i+2);
+            if(end == -1) continue;
+
+            let tag = html.substring(i+2, end);
+            let beginning = html.substring(0, i);
+            let ending = html.substring(end+2, html.length);
+            let fin = '<p className="text-center p-25 f-30">' + beginning + '</p>';
+            let fin2 = '<p className="text-center p-25 f-30">' + ending + '</p>';
+            let fin3 = parse(fin);
+            let fin4 = parse(fin2);
+            
+            switch(tag) {
+                case "PointOnPolygon":
+                    return <>{fin3} <PointOnPolygon /> {fin4}</>;
+            }
+        }
+    }
+
+    return parse('<p className="text-center p-25 f-30">' + html + '</p>');
+}
 
 interface Prop {
     title: string
@@ -16,7 +43,7 @@ function Post(prop: Prop) {
             <h3 className="second text-center">{post.summary}</h3>
             <br/>
             <br/>
-            {post.body.map(para => <><br/>{parse('<p className="text-center p-25 f-30">' + para + '</p>')}</>)}
+            {post.body.map(para => <><br/>{customParse(para)}</>)}
             <br/>
             <br/>
         </>

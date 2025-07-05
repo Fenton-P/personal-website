@@ -1,6 +1,6 @@
 import Header from './components/Header';
 import Home from './components/Home';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import Blog from './components/Blog';
 import Post from './components/Post';
 
