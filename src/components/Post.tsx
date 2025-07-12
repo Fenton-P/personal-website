@@ -2,6 +2,7 @@ import { Component, ReactElement } from 'react';
 import post_data from '../posts.json'
 import parse from 'html-react-parser';
 import PointOnPolygon from './PointOnPolygon';
+import TriangulationExample from './TriangulationExample';
 
 function customParse(html: string) {
 
@@ -44,6 +45,8 @@ function customParse(html: string) {
                     let fin1 = '<p className="text-center p-25 f-30">' + beginning + " <a href='" + link + "'>" + linkDescription + "</a>" + ending + '</p>';
 
                     return parse(fin1);
+                case "TriangulationExample":
+                    return <>{fin3}<TriangulationExample/>{fin4}</>
             }
         }
     }

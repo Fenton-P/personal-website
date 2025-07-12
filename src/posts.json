@@ -61,6 +61,26 @@
                 "Other than that flaw (though I hardly consider it one), the algorithm works as intended and should function to allow the user to place doors on the walls of rooms as they please.",
                 "Thanks for reading - Fenton"
             ]
+        },
+        {
+            "title": "Concave Polygon Triangulation",
+            "date": "7/11/2025",
+            "summary": "Triangulating a Polygon",
+            "body": [
+                "Another update for the Random Dungeon Generator Generator: the implementation of convex and concave polygon collision. The algorithm that I used came from a ^^Link, https://www.youtube.com/watch?v=QAdfkylpYwc&msockid=cf1421d75dd011f0b8bd3c9f8013ea02, video^^ by two bit coding which described a method to describe any polygon as a series of triangles, from that, I could check whether any of the triangles were intersecting – a much easier task.",
+                "Before you begin, you must ensure that the polygon’s points are in clockwise, or counter clockwise, order. If they are not, this algorithm will not work. With that aside, here is the algorithm:",
+                "1. Create a triangle composed of points p1, p2, and p(n-1) from set p of all points in the polygon and where n is the size of p, let your current index i be 0.",
+                "2. Check the angle of t1 in this triangle, if it is smaller than 180 continue to step 3, otherwise step 6.",
+                "3. Check whether any other point from set p is inside the triangle, if there isn’t, continue to step 4, otherwise step 6.",
+                "4. Add the triangle to the list of triangles and remove p1 from p.",
+                "5. If there are only 3 points in p, create a triangle with those points and add it to the list of triangles and then return that list of triangles, otherwise, go back to step 1.",
+                "6. Increment i by 1 and then create a triangle with p(i), p((i + 1) % n),  and p((i + 2) % n) from set p. Now call these points t2, t1, t3 respectively of the triangle. Use this triangle as you go to step 2.",
+                "^^Image, diagram7.png, Triangulation Algorithm^^",
+                "^^TriangulationExample^^",
+                "Just to add, but, the example is very easy to break at the moment because the user has complete control over the points with no regards to whether a possible polygon was even formed. For the time being though, the algorithm serves to do what it is needed to do.",
+                "A future blog post will cover how to check if a point is in a triangle as well as how to check if a triangle is colliding with another triangle.",
+                "Thanks for reading - Fenton"
+            ]
         }
     ]
 }
