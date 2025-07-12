@@ -64,7 +64,7 @@
         },
         {
             "title": "Concave Polygon Triangulation",
-            "date": "7/11/2025",
+            "date": "7/12/2025",
             "summary": "Triangulating a Polygon",
             "body": [
                 "Another update for the Random Dungeon Generator Generator: the implementation of convex and concave polygon collision. The algorithm that I used came from a ^^Link, https://www.youtube.com/watch?v=QAdfkylpYwc&msockid=cf1421d75dd011f0b8bd3c9f8013ea02, video^^ by two bit coding which described a method to describe any polygon as a series of triangles, from that, I could check whether any of the triangles were intersecting – a much easier task.",
