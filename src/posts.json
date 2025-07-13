@@ -81,6 +81,29 @@
                 "A future blog post will cover how to check if a point is in a triangle as well as how to check if a triangle is colliding with another triangle.",
                 "Thanks for reading - Fenton"
             ]
+        },
+        {
+            "title": "3D Rendering Through Raycasting",
+            "date": "7/13/2025",
+            "summary": "An Analysis Upon Raycasting",
+            "body": [
+                "As a smaller project between posts, a thought I can't seem to clear from my mind: 3D rendering. I have always been enticed by methods of bringing elements from our world to the digital one, and recently my focus has drifted towards how one may describe a 3D world to an observer in the second dimension.",
+                "This process is otherwise known as 3D projection to a 2D plane, and the differing methods by which vary in complexity, accuracy, and speed. One method that I have become fascinated with, as seen in the title, is raycasting: the process of shooting rays out from the observer and collecting data on the objects they bounce off of in order to render to the observer.",
+                "I wanted to embark on this endeavor without further assistance from other algorithms or tutorials, simply relying on my current mathematical and programming knowleade to see if I could accomplish this goal. This project serves another goal, however, to further my programming knoleadge by learning Haskell, a language that differs greatly from those that I already know and understand.",
+                "To start, I determined that each object could be described as a collection of triangles fromed from a set of points that made up the shape. An example tetrahedron (a simple 4 faced 3D shape made up of triangles) would look something like this:",
+                "A set of 4 different non-planar points, and a list of length 4 of triangles that formed each face of the shape.",
+                "To determine if a ray collided with this shape, I would find the equations of the planes that would form each face and then determine the point where the ray collided on that plane: if the point was inside the triangle that formed the face, it was a hit, otherwise it was considered a miss.",
+                "This relied on finding an equation that could describe the equation of a 3D ray, and I previously had not learned of anything like that. I decided to treat each axis as its own equation, so for a ray that would increase in the x axis over time: x = mt (where m is slope/rate it would increase at).",
+                "Usng this principle, I derived the equation of a ray based on two variables: A normalized vector in the direction the ray pointed (v) and the position where the ray started (p).",
+                "So on the x-axis: x = v.x * t + p.x <br> on the y-axis: y = v.y * t + p.y <br> and on the z-axis: z = v.z * t + p.z",
+                "The equation of a plane being: Ax + By + Cz + D = 0, we can solve for t with substitution:",
+                "A * ( v.x * t + p.x ) + B * ( v.y * t + p.y ) + C * ( v.z * t + p.z ) + D = 0",
+                "t * ( A * v.x + B * v.y + C * v.z ) + A * p.x + B * p.y + C * p.z + D = 0",
+                "t = - ( A * v.x + B * v.y + C * v.z ) / A * p.x + B * p.y + C * p.z + D",
+                "After finding t, we can then plug it back in to the respective equations for the ray to find the coordinate position of the point. Lastly, some formula - likely similar to the point in triangle formula which will be in a future post - can be modified to determine if the point found is within the triangular face from the shape, and, if it is, return the color of that face to the observer.",
+                "There also exist some optimization ideas I have at the moment but for now they remain just ideas, you can expect a future update soon.",
+                "Thanks for reading - Fenton"
+            ]
         }
     ]
 }
