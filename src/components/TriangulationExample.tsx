@@ -24,7 +24,7 @@ function init() {
 
   // Example polygon points
   //   let polygon = [
-  //     { x: 150, y: 200 },
+  //     { x: 150, y: 200 },s
   //     { x: 250, y: 200 },
   //     { x: 300, y: 100 },
   //     { x: 200, y: 50 },

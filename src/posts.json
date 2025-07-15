@@ -104,6 +104,21 @@
                 "There also exist some optimization ideas I have at the moment but for now they remain just ideas, you can expect a future update soon.",
                 "Thanks for reading - Fenton"
             ]
+        },
+        {
+            "title": "Conway's Game of Life",
+            "date": "7/15/2025",
+            "summary": "Creating Conway's Game of Life",
+            "body": [
+                "A bit off topic from my other projects, but I recently saw a video with conway's game of life featured in it and was fascinated with the apparent simplicity that fosters a such a complex reaction. Their are only 4 underlying rules of conwways game of life:",
+                "1. Any live cell with fewer than two live neighbours dies (referred to as underpopulation). <br> 2. Any live cell with more than three live neighbours dies (referred to as overpopulation). <br> 3. Any live cell with two or three live neighbours lives, unchanged, to the next generation. <br> 4. Any dead cell with exactly three live neighbours comes to life.",
+                "From the Conway's Game of Life ^^Link, https://conwaylife.com/, website^^.",
+                "You can find a copy of my implementation (written in java) ^^Link, https://github.com/Fenton-P/Conway-s-Game-of-Life, here^^, and, while I am learning hascal, I may rewrite the program in hascal later as a practice exercise.",
+                "The main thing that I took away from Conway's Game of Life is that simplicity can create many complex patterns, and overthinking or overengineering aspects in any future game I make may lead to its downfall: a feature doesn't need extremely copmlex rules itself to be copmlex, simple rules suffice.",
+                "When I do start working on my game I think that any entity that I end up writing will take heavy inspiration from conway's game of life. In any case, I can see why many people have taken up to studying such an unpredictable and chaotic algorithm (even watching it and creating different shapes is quite satisfying).",
+                "^^ConwayLifeGame^^<br>Conway's Game of Life - For Those Who Want to Play",
+                "Thanks for reading - Fenton"
+            ]
         }
     ]
 }
