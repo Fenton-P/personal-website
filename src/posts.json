@@ -119,6 +119,21 @@
                 "^^ConwayLifeGame^^<br>Conway's Game of Life - For Those Who Want to Play",
                 "Thanks for reading - Fenton"
             ]
+        },
+        {
+            "title": "Application of Conway's Game of Life",
+            "date": "7/16/2025",
+            "summary": "Uses of a Modified Version",
+            "body": [
+                "I only intended for the previous post about Conway's Game of Life to be a one off project, however, I had an idea to modify the program slightly to see what would happen, and I was excited from what I found.",
+                "The only changes I truly made were on the front-end or rendering side of the algorithm, I essentially made the algorithm appear blurry. There are 3 essential variables that control the rendering past that:",
+                "Brightness: how bright each cell is<br>Radius: how far each cell emits light<br>Cutoff: the lowest value the light will be before going to zero",
+                "However, after spending more time than I would like to admit playing with the variables I found some cool effects: by increasing the radiuis, decreasing the brightness, and setting the cutoff to 0, the program would run and it would almost look like an island being generated. I thought this was interesting because it could be an alternative method of generating an environment, and since conway's game of life always produces the same output for every input, you could code the starting state into a seed so that each seed produces the same output.",
+                "^^Image, gofisland.png, An Example of the Island Generation^^",
+                "Furthermore, by increasing the radius, setting the brighness to 1, and setting the cutoff to around 120-200, you could have a white blob that would move around the screen. Perhaps this could be an enemy in a game, or even a dynamic background, or another environment generator where you need an arena that has curves. The more I play around with the variables the more interesting things I find.",
+                "If you want to play around with the program, it can be found ^^Link, https://github.com/Fenton-P/Conway-s-Game-of-Life, here^^ on my github.",
+                "Thanks for reading - Fenton"
+            ]
         }
     ]
 }
