@@ -134,6 +134,23 @@
                 "If you want to play around with the program, it can be found ^^Link, https://github.com/Fenton-P/Conway-s-Game-of-Life, here^^ on my github.",
                 "Thanks for reading - Fenton"
             ]
+        },
+        {
+            "title": "Part 2: Triangulating A Polygon",
+            "date": "7/17/2025",
+            "summary": "Polygon Collision and Point in Triangle Detection",
+            "body": [
+                "This is the second part to a post made a while back about triangulating a polygon; while the algorithm on that post should suffice, some questions still remain unanswered. For instance, step 3 of the algorithm requires checking if the potential triangle has any other points inside of it, to calculate, an algorithm to determine whether points are inside triangles is needed. Furthermore, once I have the triangles, I need to be able to tell if the triangles are colliding, and for that I used the Seperating Axis Theorem.",
+                "To determine if a point exists within a triangle, the algorithm is quite simple: describe the point as a sum of two vectors from two sides of the triangle that are each multiplied by a scalar. If the either scalar is negative or greater than 1, the point cannot exist in the triangle. With that said, you still need to calculate the vectors and their respective scalars, to do that:",
+                "Vector v1 = (p2.x - p1.x, p2.y - p1.y) <br>Vector v2 = (p3.x - p1.x, p3.y - p1.y)",
+                "Scalar s1 = (p1.x * v2.y + (p.y - p1.y) * v2.x - p.x * v2.y) / (v1.y * v2.x - v1.x * v2.y)<br>Scalar s2 = (p.y - p1.y - s1 * v1.y) / v2.y",
+                "Where p is the point to check, and p1, p2, and p3 are the points that make up the triangle.",
+                "Apply the check to the scalars and you know if the point is in the triangle or not.",
+                "Now to check if the two triangles are colliding, I used the seperating axis theorem - basically, if there exists a line that seperates the two shapes, then they are not colliding. Because polygons are being used, we know that such an axis would appear perpendicular to one of the sides, so you only have to check 6 lines when comparing two triangles.",
+                "To check each line, or axis, project the points of each polygon onto the line, then determine if there is an overlap between the smallest point on the shape fartherest up the line, and largest point of the shape lowest on the line. If there isn't then the shapes aren't colliding. After checking each side and still not finding a gap, you know the shapes are colliding, so you can return true.",
+                "So, after triangulating each convex polygon into a series of concave polygons, we can then check each triangle against each other to determine if any collision is present.",
+                "Thanks for reading - Fenton"
+            ]
         }
     ]
 }
